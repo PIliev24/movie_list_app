@@ -24,7 +24,7 @@ NetworkMovie _$NetworkMovieFromJson(Map<String, dynamic> json) => NetworkMovie(
       storyline: json['storyline'] as String?,
       actors:
           (json['actors'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      imdbRating: json['imdbRating'] as dynamic,
+      imdbRating: json['imdbRating'],
       posterUrl: json['posterurl'] as String?,
     );
 

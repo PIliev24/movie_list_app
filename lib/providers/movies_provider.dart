@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
-import 'package:movies_app/pages/main_page/all_movies.dart';
-import 'package:movies_app/pages/main_page/watchlist_movies.dart';
+import 'package:movies_app/pages/home_page/all_movies.dart';
+import 'package:movies_app/pages/home_page/watchlist_movies.dart';
 import 'package:movies_app/repositories/movie.dart';
 
 import '../configuration/locator.dart';
 import '../models/ui/movie.dart';
 
-class MainPageProvider extends ChangeNotifier {
+class MoviesProvider extends ChangeNotifier {
   final _moviesRepository = getIt<MovieRepository>();
 
   List<Movie> _moviesList = [];
@@ -29,8 +29,8 @@ class MainPageProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setMoviesList() async {
-    _moviesRepository.saveMovies();
+  Future setMoviesList() async {
+    await _moviesRepository.saveMovies();
     final movies = await _moviesRepository.getAll();
     handleMoviesListChange = movies;
   }

@@ -16,3 +16,6 @@ final bottomBarItems = [
     icon: Icons.visibility,
   ),
 ];
+
+final greenColor = Colors.green.shade600;
+final textFieldStyle = TextStyle();

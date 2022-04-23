@@ -34,8 +34,8 @@ class MovieRepository implements IMovieRepository {
   }
 
   @override
-  void saveMovies() async {
+  Future saveMovies() async {
     final networkMovies = await _apiService.getMovies();
-    _dbMoviesService.setMovies(networkMovies);
+    await _dbMoviesService.setMovies(networkMovies);
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:movies_app/providers/main_page_provider.dart';
+import 'package:movies_app/providers/movies_provider.dart';
 import 'package:movies_app/routes/routes.dart';
 import 'package:provider/provider.dart';
 
@@ -17,21 +17,19 @@ class MovieCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void _handleStartClicked() {
-      if (context.read<MainPageProvider>().watchList.contains(movie)) {
-        context.read<MainPageProvider>().removeFromWatchlist(movie);
+      if (context.read<MoviesProvider>().watchList.contains(movie)) {
+        context.read<MoviesProvider>().removeFromWatchlist(movie);
       } else {
-        context.read<MainPageProvider>().addToWatchlist(movie);
+        context.read<MoviesProvider>().addToWatchlist(movie);
       }
     }
 
-    final _iconColor =
-        context.read<MainPageProvider>().watchList.contains(movie)
-            ? Colors.yellow
-            : Colors.grey;
+    final _iconColor = context.read<MoviesProvider>().watchList.contains(movie)
+        ? Colors.yellow
+        : Colors.grey;
 
     return Center(
       child: Card(
-        color: const Color(0xFFF2F5F8),
         child: InkWell(
           splashColor: Colors.blue.withAlpha(30),
           onTap: () => Navigator.pushNamed(
